@@ -6,22 +6,53 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "afterbuild": "node ./buildAfter.js",
+    "zip:extension": "cd ./extension && zip -r ../extension.zip . && cd ..",
+    "build:extension": "cross-env-shell BUILD_TYPE=extension npm run build:extension:after; bun run bunbuild; npm zip:extension",
+    "build:extension:after": "npm run build && npm run afterbuild",
+    "eslint": "./node_modules/.bin/eslint \"app/**/*.{js,jsx,ts,tsx}\" --ignore-pattern \"app/lib/\" --ignore-pattern \"app/shared/\"",
+    "check-types": "tsc --noemit",
+    "eslint:commit": "git diff --cached --name-only | grep -E 'app.*\\.[jt]sx?$' | xargs ./node_modules/.bin/eslint --quiet",
+    "eslint:quiet": "./node_modules/.bin/eslint \"app/**/*.{js,jsx,ts,tsx}\" --ignore-pattern \"app/lib/\" --ignore-pattern \"app/shared/\" --quiet",
+    "prettier:single": "./node_modules/.bin/prettier --single-quote --no-semi --trailing-comma es5 --print-width 120 --tab-width 4 --arrow-parens avoid --write",
+    "prettier": "./node_modules/.bin/prettier --single-quote --no-semi --trailing-comma es5 --print-width 120 --tab-width 4 --arrow-parens avoid --write \"app/**/*.{js,jsx,ts,tsx}\"",
+    "prettier:check": "npm run prettier -- --list-different",
+    "lint-staged": "lint-staged"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "app/**/*.{js,jsx,ts,tsx}": [
+      "npm run eslint:commit",
+      "prettier --single-quote --no-semi --trailing-comma es5 --print-width 120 --tab-width 4 --arrow-parens avoid --write  \"!app/lib/**\"",
+      "git add"
+    ]
   },
   "dependencies": {
+    "lodash": "^4.17.21",
+    "next": "13.5.4",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "13.5.4"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-typescript": "^7.23.0",
+    "@types/lodash": "^4.14.199",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
-    "postcss": "^8",
-    "tailwindcss": "^3",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
-    "eslint-config-next": "13.5.4"
+    "eslint-config-next": "13.5.4",
+    "lint-staged": "^14.0.1",
+    "postcss": "^8",
+    "pre-commit": "^1.2.2",
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3",
+    "typescript": "^5"
   }
 }
