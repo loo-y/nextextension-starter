@@ -25,13 +25,13 @@ This is a chrome extension starter based on Next.js. The extension manifest vers
     ```
 
 ### NPM Script Descriptions
-```pack:extensionscript``` - Generates the actual content-script.js and inject-script.js.
+- **```pack:extensionscript```:**  Generates the actual content-script.js and inject-script.js.
 
-```afterbuild``` - Extracts inline scripts from the packaged HTML files and includes them using the src attribute. The reason is Chrome extensions do not support inline scripts.
+- **```afterbuild```:**  Extracts inline scripts from the packaged HTML files and includes them using the src attribute. The reason is Chrome extensions do not support inline scripts.
 
-```zip:extension``` - Generates a packaged file for the extension, making it easier for distribution. The zip file can be included in the project release.
+- **```zip:extension```:**  Generates a packaged file for the extension, making it easier for distribution. The zip file can be included in the project release.
 
 ### Configuration Details
-```extension.next.config.js``` - Contains the actual Next.js configuration for the extension. The original ```next.config.js``` is preserved for debugging HTML styles locally using ```npm run dev```.
+- **```extension.next.config.js```:**  Contains the actual Next.js configuration for the extension. The original ```next.config.js``` is preserved for debugging HTML styles locally using ```npm run dev```.
 
-```extension.webpack.config.js``` - Corresponds to the npm script ```pack:extensionscript```, used for packaging the two script files. You can also add additional scripts as needed.
+- **```extension.webpack.config.js```:**  Corresponds to the npm script ```pack:extensionscript```, used for packaging the two script files. You can also add additional scripts as needed.

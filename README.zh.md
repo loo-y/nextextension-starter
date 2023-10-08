@@ -25,13 +25,13 @@
     ```
 
 ### NPM Script 说明
-```pack:extensionscript``` - 用于生成实际的 content-script.js 和 inject-script.js
+- **```pack:extensionscript```:** 用于生成实际的 content-script.js 和 inject-script.js
 
-```afterbuild``` - 用于将打包后的 html 文件中的 inline script 抽离出来以 src 的方式引入。这是由于 chrome 插件不需要内置 html 使用 inline script
+- **```afterbuild```:** 用于将打包后的 html 文件中的 inline script 抽离出来以 src 的方式引入。这是由于 chrome 插件不需要内置 html 使用 inline script
 
-```zip:extension``` - 生成插件的打包文件，方便分发，也可将 zip 文件防止在项目 release
+- **```zip:extension```:** 生成插件的打包文件，方便分发，也可将 zip 文件防止在项目 release
 
 ### 配置说明
-```extension.next.config.js``` - 插件实际的 next 配置，另外保留原有的 ```next.config.js``` 便于本地 ```npm run dev``` 时调试 html 的样式
+- **```extension.next.config.js```:** 插件实际的 next 配置，另外保留原有的 ```next.config.js``` 便于本地 ```npm run dev``` 时调试 html 的样式
 
-```extension.webpack.config.js``` - 对应 npm script 为 ```pack:extensionscript```, 用于两个 script 文件的打包，也可以自行增加其他 script
+- **```extension.webpack.config.js```:** 对应 npm script 为 ```pack:extensionscript```, 用于两个 script 文件的打包，也可以自行增加其他 script
