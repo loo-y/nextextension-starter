@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:extension": "npm run pack:extensionscript; cross-env-shell BUILD_TYPE=extension npm run build; npm run afterbuild; npm run zip:extension",
     "start": "next start",
     "lint": "next lint",
     "afterbuild": "node ./buildAfter.js",
-    "zip:extension": "cd ./extension && zip -r ../extension.zip . && cd ..",
-    "build:extension": "cross-env-shell BUILD_TYPE=extension npm run build:extension:after; bun run bunbuild; npm zip:extension",
-    "build:extension:after": "npm run build && npm run afterbuild",
+    "zip:extension": "rm -rf nextextension.zip && cd ./extension && zip -r ../nextextension.zip . && cd ..",
+    "pack:extensionscript": "webpack --config ./extension.webpack.config.js",
     "eslint": "./node_modules/.bin/eslint \"app/**/*.{js,jsx,ts,tsx}\" --ignore-pattern \"app/lib/\" --ignore-pattern \"app/shared/\"",
     "check-types": "tsc --noemit",
     "eslint:commit": "git diff --cached --name-only | grep -E 'app.*\\.[jt]sx?$' | xargs ./node_modules/.bin/eslint --quiet",
@@ -21,7 +21,9 @@
     "lint-staged": "lint-staged"
   },
   "keywords": [
-    "chrome", "extension", "nextjs"
+    "chrome",
+    "extension",
+    "nextjs"
   ],
   "author": "loo-y",
   "license": "ISC",
@@ -50,6 +52,8 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "cheerio": "^1.0.0-rc.12",
+    "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
@@ -58,6 +62,9 @@
     "pre-commit": "^1.2.2",
     "prettier": "^3.0.3",
     "tailwindcss": "^3",
-    "typescript": "^5"
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }

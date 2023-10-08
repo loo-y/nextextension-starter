@@ -36,3 +36,11 @@ next-env.d.ts
 
 # package-lock 
 package-lock.json
+
+# extension build file
+/extension/dist/
+/extension/content-script.js
+/extension/inject-script.js
+
+# zip file
+*.zip

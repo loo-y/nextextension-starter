@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const extensionNextConfig = require('./extension.config')
+const extensionNextConfig = require('./extension.next.config')
 
 const nextConfig = process.env.BUILD_TYPE == `extension` ? extensionNextConfig : {
     reactStrictMode: true,
