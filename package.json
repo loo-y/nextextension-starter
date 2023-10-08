@@ -20,6 +20,11 @@
     "prettier:check": "npm run prettier -- --list-different",
     "lint-staged": "lint-staged"
   },
+  "keywords": [
+    "chrome", "extension", "nextjs"
+  ],
+  "author": "loo-y",
+  "license": "ISC",
   "pre-commit": "lint-staged",
   "lint-staged": {
     "app/**/*.{js,jsx,ts,tsx}": [
