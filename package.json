@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:extension": "npm run pack:extensionscript; cross-env-shell BUILD_TYPE=extension npm run build; npm run afterbuild; npm run zip:extension",
+    "build:extension": "npm run clear:terminal; npm run pack:extensionscript; cross-env-shell BUILD_TYPE=extension npm run build; npm run afterbuild; npm run zip:extension",
     "start": "next start",
     "lint": "next lint",
+    "clear:terminal": "tput reset",
     "afterbuild": "node ./buildAfter.js",
     "zip:extension": "rm -rf nextextension.zip && cd ./extension && zip -r ../nextextension.zip . && cd ..",
     "pack:extensionscript": "webpack --config ./extension.webpack.config.js",
