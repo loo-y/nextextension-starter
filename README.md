@@ -23,6 +23,10 @@ This is a chrome extension starter based on Next.js. The extension manifest vers
     ```bash
     npm run build:extension
     ```
+3. Generate icon
+    ```python
+    python3 icon_generator.py nextextension-start.png
+    ```
 
 ### NPM Script Descriptions
 - **```pack:extensionscript```:**  Generates the actual content-script.js and inject-script.js.

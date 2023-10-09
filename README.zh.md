@@ -23,6 +23,11 @@
     ```bash
     npm run build:extension
     ```
+3. 生成icon
+    ```python
+    python3 icon_generator.py nextextension-start.png
+    ```
+
 
 ### NPM Script 说明
 - **```pack:extensionscript```:** 用于生成实际的 content-script.js 和 inject-script.js
