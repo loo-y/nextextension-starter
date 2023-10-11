@@ -3,9 +3,16 @@ const {CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 
 const outDir = path.resolve(__dirname, './extension')
 const scriptPath = path.resolve(__dirname, './app/scripts/')
+const root = path.resolve(__dirname, './');
 
 module.exports = {
     mode: 'production', // 设置为 'development' 或 'production'
+    resolve: {
+        extensions: ['.js', '.ts'],
+        alias: {
+            "@": root,
+        }
+    },
     entry: {
         content: path.resolve(scriptPath, './content'),
         inject: path.resolve(scriptPath, './inject'),
@@ -32,10 +39,20 @@ module.exports = {
                     compilerOptions: {
                         target: 'es5',
                         noEmit: false,
+                        baseUrl: '.',
+                        paths: {
+                            "@/*": ["./*"]
+                        }
                       }
                 },
                 exclude: /node_modules/,
             },
         ],
+    },
+    stats: {
+        colors: true,
+        modules: true,
+        reasons: true,
+        errorDetails: true
     },
 }

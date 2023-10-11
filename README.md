@@ -17,7 +17,7 @@ This is a chrome extension starter based on Next.js. The extension manifest vers
 ### How to Build
 1. Install dependencies
     ```bash
-    npm i
+    npm install
     ```
 2. Build extension
     ```bash
@@ -27,6 +27,17 @@ This is a chrome extension starter based on Next.js. The extension manifest vers
     ```python
     python3 icon_generator.py nextextension-start.png
     ```
+<br /><br />
+You can use [```bun```](https://github.com/oven-sh/bun) alternatively:<br/>
+1. Install dependencies by bun
+    ```
+    bun install
+    ```
+2. Build extension by bun
+    ```
+    bun bun:extension
+    ```
+<br />
 
 ### NPM Script Descriptions
 - **```pack:extensionscript```:**  Generates the actual content-script.js and inject-script.js.

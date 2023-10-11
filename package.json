@@ -12,6 +12,8 @@
     "afterbuild": "node ./buildAfter.js",
     "zip:extension": "rm -rf nextextension.zip && cd ./extension && zip -r ../nextextension.zip . && cd ..",
     "pack:extensionscript": "webpack --config ./extension.webpack.config.js",
+    "bun:pack": "bun ./bunpack.ts",
+    "bun:extension": "bun clear:terminal; bun bun:pack; cross-env-shell BUILD_TYPE=extension bun run build; bun afterbuild;  bun zip:extension",
     "eslint": "./node_modules/.bin/eslint \"app/**/*.{js,jsx,ts,tsx}\" --ignore-pattern \"app/lib/\" --ignore-pattern \"app/shared/\"",
     "check-types": "tsc --noemit",
     "eslint:commit": "git diff --cached --name-only | grep -E 'app.*\\.[jt]sx?$' | xargs ./node_modules/.bin/eslint --quiet",

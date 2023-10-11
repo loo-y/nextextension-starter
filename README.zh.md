@@ -27,7 +27,17 @@
     ```python
     python3 icon_generator.py nextextension-start.png
     ```
-
+<br /><br />
+你也可以选择使用 [```bun```](https://github.com/oven-sh/bun) 来安装和打包:<br/>
+1. Install dependencies by bun
+    ```
+    bun install
+    ```
+2. Build extension by bun
+    ```
+    bun bun:extension
+    ```
+<br />
 
 ### NPM Script 说明
 - **```pack:extensionscript```:** 用于生成实际的 content-script.js 和 inject-script.js
