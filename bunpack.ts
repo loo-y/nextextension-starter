@@ -32,13 +32,11 @@ async function bunBuild() {
     const injectScript = path.resolve(__dirname, './app/scripts/inject/')
     const builtInjectScript = path.resolve(outDir, './inject-script.js')
 
-    const zipFIle = path.resolve(__dirname, './iPhoneOrder.zip')
 
     // 临时移除 removeFile 调用， bun的bug。 TODO
     // await Promise.all([
     //     removeFile(builtContentScript, true),
     //     removeFile(builtInjectScript, true),
-    //     removeFile(zipFIle, true),
     // ])
 
     // @ts-ignore
