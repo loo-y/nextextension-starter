@@ -17,7 +17,7 @@
 ### 如何打包
 1. 安装
     ```bash
-    npm i
+    npm install
     ```
 2. 打包
     ```bash
@@ -29,11 +29,11 @@
     ```
 <br /><br />
 你也可以选择使用 [```bun```](https://github.com/oven-sh/bun) 来安装和打包:<br/>
-1. Install dependencies by bun
+1. 安装
     ```
     bun install
     ```
-2. Build extension by bun
+2. 打包
     ```
     bun bun:extension
     ```
@@ -42,7 +42,7 @@
 ### NPM Script 说明
 - **```pack:extensionscript```:** 用于生成实际的 content-script.js 和 inject-script.js
 
-- **```afterbuild```:** 用于将打包后的 html 文件中的 inline script 抽离出来以 src 的方式引入。这是由于 chrome 插件不需要内置 html 使用 inline script
+- **```afterbuild```:** 用于将打包后的 html 文件中的 inline script 抽离出来以 src 的方式引入。这是由于 chrome 插件不支持内置 html 使用 inline script
 
 - **```zip:extension```:** 生成插件的打包文件，方便分发，也可将 zip 文件防止在项目 release
 
